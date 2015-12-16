@@ -571,20 +571,14 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 19:
         if getting_team_name:
-            return 'Kattman'
+            return 'loyal vengeful'
         else:
-            # use history, opponent_history, score, opponent_score
-            # to compute your strategy
-            if len(opponent_history)==0: #Collude on first round
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif opponent_history[-1] == 'c': #Collude if they colluded
-                return 'c'
-            elif opponent_history[-1] == 'b': #If they betray, betray with a 10% chance to collude
-                rand = random.randint(1,10)
-                if rand == 1:
-                    return 'c'
-                else:
-                    return 'b'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray is they were severely punished last time
+            else:
+                return 'c' #otherwise collude
     
     
 
