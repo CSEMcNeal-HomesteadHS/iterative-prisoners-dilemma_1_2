@@ -175,7 +175,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 3:
         if getting_team_name:
-            return 'loyal vengeful occasionally greedy'
+            return 'Droid Army sorta greedy'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
