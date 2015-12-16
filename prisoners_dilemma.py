@@ -178,7 +178,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
             else:
-                if random.random()<0.6525: #47.25% of the other rounds
+                if random.random()<0.6525: #65.25% of the other rounds
                     return 'b'         #betray
                 else:
                     return 'c'         #otherwise collude
