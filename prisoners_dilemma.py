@@ -174,7 +174,11 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
             return 'Droid Army sorta greedy'
         else:
             if len(opponent_history)==0: #It's the first round: collude
-                return 'c'
+             return 'c'
+             if random.random()<0.6525: #65.25% of the other rounds
+                    return 'b'         #betray
+                else:
+                    return 'c'         #otherwise collude
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray is they were severely punished last time
             else:
