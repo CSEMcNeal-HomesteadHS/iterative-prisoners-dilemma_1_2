@@ -6,13 +6,9 @@ for the Iterative Prisoners Dilemma, the canonical game of game-theory.
 Each strategy plays 100 to 200 rounds against each other strategy.
 The results of all previous rounds within a 100-200 round stretch are known
 to both players. 
-
 play_tournament() executes the tournament and stores output in tournament.txt
-
 Players should each code their strategies in their assigned section of code.
-
 Aggregated results are stored in tournament.txt
-
 Unpublished work (c)2013 Project Lead The Way
 CSE Project 1.3.5 Collaborating on a Project
 Draft, Do Not Distribute
@@ -111,9 +107,9 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     # This example player always colludes
     if player == 0:
         if getting_team_name:
-            return 'loyal'
+            return 'backstabber'
         else:
-            return 'c'
+            return 'b'
 
     
         
@@ -439,20 +435,14 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #
     elif player == 13:
         if getting_team_name:
-            return 'Kattman'
+            return 'loyal vengeful'
         else:
-            # use history, opponent_history, score, opponent_score
-            # to compute your strategy
-            if len(opponent_history)==0: #Collude on first round
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif opponent_history[-1] == 'c': #Collude if they colluded
-                return 'c'
-            elif opponent_history[-1] == 'b': #If they betray, betray with a 10% chance to collude
-                rand = random.randint(1,10)
-                if rand == 1:
-                    return 'c'
-                else:
-                    return 'b'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray is they were severely punished last time
+            else:
+                return 'c' #otherwise collude
     
     
 
